@@ -3,7 +3,6 @@ dependencies:
     - echo y | android update sdk --no-ui --filter "android-23,build-tools-24.0.0"
 test:
   override:
-    - echo "Nothing to do here"
     - ./gradlew build
     - cp -r ./app/build/outputs $CIRCLE_ARTIFACTS
 deployment:
