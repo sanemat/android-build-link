@@ -1,6 +1,6 @@
 dependencies:
-  override:
-    - echo y | android update sdk --no-ui --filter "android-23,build-tools-24.0.0"
+  pre:
+    - echo y | android update sdk --no-ui --all --filter "android-23,build-tools-24.0.0"
 test:
   override:
     - ./gradlew build
