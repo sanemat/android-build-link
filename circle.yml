@@ -4,13 +4,13 @@ dependencies:
     - sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
     - echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64' >> ~/.circlerc
     - android list sdk --all --extended
-    - echo y | android update sdk --no-ui --filter "tools,platform-tools,android-24,build-tools-24.0.0,extra-android-support,extra-google-m2repository,extra-android-m2repository,sys-img-x86_64-android-24"
+    - echo y | android update sdk --no-ui --filter "tools,platform-tools,android-23,build-tools-24.0.0,extra-android-support,extra-google-m2repository,extra-android-m2repositor,sys-img-armeabi-v7a-android-23"
     - android list targets
-    - echo n | android create avd -n testing -f -t android-24 -b default/x86_64
+    - echo n | android create avd -n building -f -t android-23 -b default/armeabi-v7a
 test:
   pre:
     # start the emulator
-    - emulator -avd testing -no-audio -no-window:
+    - emulator -avd building -no-audio -no-window:
         background: true
         parallel: true
     # wait for it to have booted
