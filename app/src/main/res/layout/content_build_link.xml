@@ -9,8 +9,10 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
+        android:id="@+id/content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_build_link"
-        tools:context="jp.sane.buildlink.BuildLinkActivity">
+        tools:context="jp.sane.buildlink.BuildLinkActivity"
+>
 
 </RelativeLayout>
