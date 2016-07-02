@@ -1,0 +1,19 @@
+dependencies:
+  pre:
+    - sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0/bin/java
+    - sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
+    - echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64' >> ~/.circlerc
+    - android list sdk --all --extended
+    - echo y | android update sdk --no-ui --all --filter "tools,platform-tools,android-23,build-tools-24.0.0,extra-android-support,extra-google-m2repository,extra-android-m2repositor"
+test:
+  override:
+    # run tests  against the emulator.
+    - ./gradlew build -PdisablePreDex
+    # copy the build outputs to artifacts
+    - cp -r ./app/build/outputs $CIRCLE_ARTIFACTS
+deployment:
+  master:
+    branch: master
+    commands:
+      - ./gradlew build
+      - cp -r ./app/build/outputs $CIRCLE_ARTIFACTS
