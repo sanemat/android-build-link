@@ -12,7 +12,9 @@ android:
     - extra-google-m2repository
     - sys-img-armeabi-v7a-android-23
     - sys-img-x86-android-23
-
+env:
+  global:
+    - ADB_INSTALL_TIMEOUT=8 # minutes (2 minutes by default)
 script:
    - ./gradlew build connectedCheck
 
